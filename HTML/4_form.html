@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="iam" method="get">
+       <h3>이름입력하기</h3>
+        <label for="name">이름 </label>
+      <input type="text" 
+             id="name" name="name"
+             autocomplete="off" spellcheck=true>
+      
+        <h3><label for="sex">성별선택</label></h3>
+      <input type="radio" id="male" name="sex" value="MALE"> 
+    남자
+      <input type="radio" id="female" name="sex" value="FEMALE">
+    여자<br>
+        
+        <h3><label for="food">좋아하는 음식 선택하기</label><br></h3>
+      <input type="checkbox" id="pasta" name="food" value="PASTA" checked> 
+    파스타<br>
+      <input type="checkbox" id="jeyuk" name="food" value="JEYUK">
+    제육<br>
+      <input type="checkbox" id="donggass" name="food" value="DONGGASS">
+    돈까스
+        <h3> 전화번호</h3>
+        전화번호 <input type="tel" id = "tel" name="phone" size="20" placeholder='010-1234-5678' pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}">
+        <h3>이메일</h3>
+        이메일 <input type="email" id = "email" name="EMAIL" size="20" placeholder='asdf@naver.com' >
+         </br></br>
+        <button type="submit" form="iam">제출하기</button>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/CPuJ6xPRYXQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</body>
+</html>
