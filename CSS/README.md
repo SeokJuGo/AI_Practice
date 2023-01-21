@@ -1,7 +1,7 @@
 # CSS
 
 # CSS 이론
-
+ 
 <aside>
 💡 CSS, Cascading Style Sheets
 HTML 요소들이 각종 미디어에서 어떻게 보이는가를 정의하는 데 사용되는 스타일 시트 언어.
