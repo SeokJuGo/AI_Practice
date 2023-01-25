@@ -1,0 +1,4 @@
+streamlit # streamlit 기본 모듈 (필수)
+# 여기부터 추가하고 싶은 모델 표시
+pandas # pandas 라이브러리
+mlxtend # Linux에서 joblib(모델 불러오는 라이브러리)을 쓰기 위해 필요
