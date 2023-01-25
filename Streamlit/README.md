@@ -1,5 +1,4 @@
 # 1. Streamlit이란?
-[app · Streamlit.pdf](https://github.com/SeokJuGo/Learn-Study/files/10496891/app.Streamlit.pdf)
 파이썬 라이브러리 중 하
 나로 딥러닝 모델이나 데이터 시각화를 쉽게 구현하고 웹서비스로 만들고 싶을 때 이용한다.
 
