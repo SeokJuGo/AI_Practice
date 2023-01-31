@@ -1,8 +1,8 @@
 // JAVASCRIPT INPUT
-var scoreE = prompt('영어 점수를 입력해주세요.');
-var scoreM = prompt('수학 점수를 입력해주세요.');
+var scoreE = prompt('INPUT English Score');
+var scoreM = prompt('INPUT Math Score');
 
-alert('평균 점수: ' + (+scoreE + +scoreM)/2);
+alert('mean: ' + (+scoreE + +scoreM)/2);
 
 
 
