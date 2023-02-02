@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let imgList = ['https://i.imgur.com/aexDiRM.png', 
+'https://i.imgur.com/G1yUrEf.png', 
+'https://i.imgur.com/FaVM6Vg.png']
+        // 사용자한테 몇개를 입력할 것인지 이미지 개수를 받고, 입력된 개수만큼 imgList에서 이미지를 출력받겠습니다.
+        let input = prompt('보고 싶은 이미지 개수를 입력해주세요')
+        document.write('<h2>', input, '<p>')
+
+
+        // for (var i =0; i < input ; i++){
+        //     if (i % 3 == 1){ 
+        //     document.write('<img src='+imgList[0]+' width=150 />')
+        //     } else if (i % 3 == 2){ 
+        //     document.write('<img src='+imgList[1]+' width=150 />')
+        //     } else {
+        //     document.write('<img src='+imgList[2]+' width=150 />')
+        //     }
+        // }
+
+        // while문으로 변경
+
+        // 선언 및 초기값
+        // while (조건) {
+        //     조건이 만족하는 동안 실행문
+        //     조건을 끝낼 실마리 
+        // }
+        
+        var i =0;
+
+        while (i < input) {
+            if (i % 3 == 1){ 
+            document.write('<img src='+imgList[0]+' width=150 />')
+            } else if (i % 3 == 2){ 
+            document.write('<img src='+imgList[1]+' width=150 />')
+            } else {
+            document.write('<img src='+imgList[2]+' width=150 />')
+            } // 조건이 만족하는 동안 실행문
+            i++ // 조건을 끝낼 실마리 
+        }
+
+    </script>
+
+</body>
+</html>

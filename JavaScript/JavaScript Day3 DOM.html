@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class='title' id="one" style="border: 5px solid yellow;" onclick="myfun()">짱구는</div>
+  
+    <div class='title' id="two" style="border: 5px solid pink;" onclick="myfun2()">못말려</div>
+  
+  <div id="three">
+        <ul id="four">
+            <li>훈이</li>
+            <li>철수</li>
+        </ul>
+    </div>
+
+ <script>
+   let imgList =['https://i.imgur.com/aexDiRM.png', 
+'https://i.imgur.com/G1yUrEf.png', 
+'https://i.imgur.com/FaVM6Vg.png']
+   
+   function myfun() {
+     // .innerText : text, .innerHTML : 코드를 HTML로 해석
+     // document.getElementById('one').innerText = '짱아는';
+     document.getElementById('one').innerHTML = '<img src="https://i.imgur.com/aexDiRM.png" width=300>';
+   }  
+   
+   function myfun2() {
+     // document.getElementById('two').innerHTML = '<div style="color:red">못말려</div>';  
+     document.getElementById('two').style.backgroundColor = 'blue';
+     document.getElementById('two').style.color = 'white';
+    }
+    // 직접 개발자도구 콘솔에 넣어서 확인해보기
+     // 내부 Text
+    // document.getElementById("one").innerText;
+    // // 내부 HTML
+    // document.getElementById("one").innerHTML;
+    // document.getElementsByClassName('title');
+    // document.getElementsByTagName('div') 
+    // document.getElementsByTagName('div')[0]
+
+
+    // // html 코드를 파싱하면 만들어지는 DOM Tree는 요소, 속성, 텍스트라는 각각의 값을 가진 노드로 파싱됨
+    // // 노드 Value (해당 속성값)
+    //         // 요소 노드(element node) undefined 
+    //         // 속성 노드(attribute node)
+    //         // 텍스트 노드(text node)	해당 텍스트 문자열
+    // document.getElementById("one").nodeValue;
+    // // 해당 노드 태그 (ex : div)
+    // document.getElementById("one").nodeName;
+    // // 노드의 타입
+    // // 요소 노드(element node): 1
+    // // 속성 노드(attribute node): 2
+    // // 텍스트 노드(text node): 3
+    // // 주석 노드(comment node): 8
+    // // 문서 노드(document node): 9
+    // document.getElementById("one").nodeType;
+
+    // // 부모노드
+    // document.getElementById("one").parentNode
+    // // 자식노드들(배열)
+    // document.getElementById("three").childNodes
+    // // 첫번째 자식
+    // document.getElementById("three").firstChild
+    // // 마지막 자식
+    // document.getElementById("three").lastChild
+    // // 다음 형제
+    // document.getElementById("three").nextSibling
+    // // 이전 형제
+    // document.getElementById("three").previousSibling
+
+    // var elem = document.getElementById('one');
+    // elem;
+    // var elems = document.getElementsByTagName('li');
+    // elems;
+
+    // var elems1 = document.querySelectorAll('li')
+    // elems1;
+
+  </script>
+</body>
+</html>
