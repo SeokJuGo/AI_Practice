@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body id="theBody" class="body_one">
+    <script>
+
+        // v 버튼을 누른다 -> i값이 변경된다 -> 배경색깔은 bgList[i] 색깔을 출력한다
+        // v bgList의 개수를 넘어가는 경우 다시 0으로 초기화된다
+        // x 전체 화면을 새로 고치는 코드가 아니라 body 자체만 잡아서 변경하는 로직이 필요하다 
+
+        let bgList = ['red', 'yellow', 'green', 'blue', 'purple']
+        var i = 0; 
+        // 버튼을 클릭할 때마다 배경 색깔이 변하는 함수를 만들어주세요
+        function bgColorChange() {
+            if (i == bgList.length ) {
+                i = 0;
+            }
+            // 재귀의 구조 : bgColorChange() 함수 안에서 다시 bgColorChange()를 호출 -> 계속 버튼이 생겨남
+            // document.getElementsByTagName("body")[0].style.backgroundColor = bgList[i];
+            // const bg = document.getElementsByTagName("body")[0] 
+            const bg = document.querySelector("body")
+            bg.style.backgroundColor = bgList[i];
+            i++;
+        }
+    </script>
+    <button onclick='bgColorChange();'>배경</button>
+</body>
+</html>
