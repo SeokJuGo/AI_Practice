@@ -1,0 +1,384 @@
+<html>
+<head>
+  <style type="text/css">
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    header {
+      
+  position: fixed;
+  top: 0;
+  /* width: 100% */
+  left: 0;
+  right: 0;
+
+  /* 생략 */
+}
+    .product-box {
+      background-color: #f1f1f1;
+      padding: 20px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+        .cart {
+    display: inline-block;
+    position: relative;
+    }
+
+    .cart-count {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    padding: 3px 7px;
+    border-radius: 50%;
+    }
+    img {
+      width: 100%;
+    }
+    button#add-to-cart {
+        position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 10px;
+    height: 10px;
+    
+}
+#floatdiv {
+    position:fixed; 
+    width:175px;
+    display:inline-block;
+    right:0px; /* 창에서 오른쪽 길이 */
+    top:94%; /* 창에서 위에서 부터의 높이 */
+    background-color: transparent;
+    margin:0;
+}
+#floatdiv2 {
+    position:fixed; 
+    width:175px;
+    display:inline-block;
+    right:50px; /* 창에서 오른쪽 길이 */
+    top:50%; /* 창에서 위에서 부터의 높이 */
+    background-color: transparent;
+    margin:0;
+}
+  </style>
+  <script>
+    class Member {
+  
+  constructor(name) {
+    this.name = name;
+    this.total = 0;
+    this.reward = 0;
+    this.delivery_fee = 3000;
+    this.cart = new Cart();
+  }
+    info() { 
+    console.log(`이름: ${this.name}`);
+  }
+    buy(product,value=1) {
+      this.total += product.p_price*value;
+      product.quantity-=value 
+      console.log(`${this.name}님이 ${product.p_name}(₩${product.p_price*value})를 ${value}개 샀습니다!`);
+  }
+    add_cart(product, quantity) {
+      this.cart.add_item(product, quantity);
+    }
+     delete_cart(product) {
+       this.cart.delete_item(product);
+  }
+    get_cart() {
+      return this.cart;
+    }
+ }
+
+
+
+
+// 0. 조건: 등급은 일반회원, 프렌즈, 퍼플(Plain, Friends, Purple) + 개인정보는 이름만 받습니다. 이외 3개 클래스를 구현하는데 필요한 속성, 함수를 직접 논의하고 구현해보세요
+class PlaneMember extends Member {
+  constructor(name,total,reward,delivery_fee) {
+    super(name,total,reward,delivery_fee);
+    reward=this.total*0.005;
+  }
+  
+  info_check(){
+    super.info();
+    this.reward=this.total*0.005;
+    console.log(`총 구매금액 : ₩${this.total} , 적립금 : ₩${this.reward},회원등급번호: 일반`);
+  }
+
+  
+}
+
+class FriendsMember extends Member {
+  constructor(name,total,reward,delivery_fee) {
+    super(name,total,reward,delivery_fee);
+    reward=total*0.01;
+    delivery_fee=2000;
+  }
+  info_check(){
+    super.info();
+    this.reward=total*0.01;
+    console.log(`총 구매금액 : ₩${this.total} , 적립금 : ₩${this.reward}, 회원등급번호: 프렌즈`);
+  }
+  
+
+
+}
+
+class PurpleMember extends Member {
+  constructor(name,total,reward,delivery_fee) { 
+    super(name, total);
+    delivery_fee=0;
+    reward=total*0.07;
+  }
+   info_check(){
+    super.info();
+    this.reward=total*0.07;
+    console.log(`총 구매금액 : ₩${this.total} , 적립금 : ₩${this.reward},회원등급번호: 퍼플`);
+  }
+  
+  
+  
+}
+
+
+// 1. 일련번호, 상품명, 수량, 가격을 속성으로 가지는 Product 클래스를 구현해보세요. (일련번호는 자동 입력됨)
+
+
+
+class Product {
+  static product_num = 0;
+  constructor(p_name, p_quantity, p_price,jjim=0) {
+    this.p_num = ++Product.product_num;
+    this.p_name = p_name;
+    this.p_quantity = p_quantity;
+    this.p_price = p_price;
+    this.jjim = jjim;
+  }
+
+  get num() {
+    return this.p_num;
+  }
+
+  get name() {
+    return this.p_name;
+  }
+
+  set name(value) {
+    this.p_name = value;
+  }
+
+  get quantity() {
+    return this.p_quantity;
+  }
+
+  set quantity(value) {
+    this.p_quantity = value;
+  }
+
+  get price() {
+    return this.p_price;
+  }
+
+  set price(value) {
+    this.p_price = value;
+  }
+}  
+
+
+
+class Cart {
+  constructor() {
+    this.items = [];
+  }
+
+  add_item(product, quantity) {
+    let exist = this.items.find(i => i.product.name === product.name);
+    if (exist) {
+      exist.quantity += quantity;
+    } else {
+      this.items.push({ product, quantity });
+    }
+  }
+  delete_item(product) {
+    this.items.pop({product});
+  }
+  get_items() {
+    return this.items;
+  }
+}
+
+
+class Message {
+        constructor(elementId) {
+          this.element = document.getElementById(elementId);
+        }
+
+        show(message) {
+          this.element.innerHTML = message;
+        }
+      }
+
+  </script>
+
+</head>
+<header>
+<img src="header.png" height="40" width="200" >
+</header>
+<body>
+  <div id="floatdiv">
+  </div>
+  <div id="floatdiv2">Hi
+  </div>
+    <script type="text/javascript" src="project.js"></script>
+    <div class="cart">
+        <img src="cart.png" alt="cart">
+        <span class="cart-count">0</span>
+      </div>
+    </br>
+
+  <div class="container">
+    
+    <h2>🍇 식품 목록 🍇</h2>
+    <div class="row">
+      <div class="col-6">
+        <div class="product-box">
+          <img src="product1.jpg" class="img-fluid">
+          <h2 id = "aa">바나나</h2> 
+          <p>가격: ₩1500</p>
+          <p>수량:
+            <select id="qtt1">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </p>
+          <button id="c_btn1">장바구니</button>
+          <button id="b_btn1">구매</button>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="product-box">
+          <img src="product2.jpg" class="img-fluid">
+          <h2> 샐러드 </h2>
+          <p>가격: ₩5000</p>
+          <p>수량:
+            <select id="qtt2">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </p>
+          <button id="c_btn2">장바구니</button>
+          <button id="b_btn2">구매</button>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="product-box">
+          <img src="product3.jpg" class="img-fluid">
+          <h2>아보카도</h2>
+          <p>가격: ₩3000</p>
+          <p>수량:
+            <select id="qtt3">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </p>
+          <button id="c_btn3">장바구니</button>
+          <button id="b_btn3">구매</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+
+<script>
+const Go = new PlaneMember("SeokJu"); 
+
+
+  //이 름 <div id = name>sa</div></br>
+  //    총 액 <div id = total>sa</div></br>
+  //    등 급 <div id = grade>sa</div></br>
+
+  new Message("floatdiv").show(`${Go.name}님 구매금액 : ${Go.total}`); 
+    const banana = new Product("바나나", 1000,1500)
+    const salad = new Product("샐러드", 1000,5000)
+    const abocado = new Product("아보카도",1000, 3000)
+
+
+    document.getElementById("c_btn1").onclick = function () {
+      Go.add_cart(banana, Number(document.getElementById("qtt1").value));
+      alert(`바나나를 ${document.getElementById("qtt1").value}개 카트에 담았습니다!`);
+      new Message("floatdiv2").show(`${Go.name}님 카트 : ${Go.get_cart['product']['p_name']}`); 
+      
+        };
+
+    document.getElementById("b_btn1").onclick = function () {
+      Go.buy(banana, Number(document.getElementById("qtt1").value));
+      alert(`바나나를 ${document.getElementById("qtt1").value}개 샀습니다!`);
+      new Message("floatdiv").show(`${Go.name}님 구매금액 : ${Go.total}`); 
+      };
+
+
+
+
+    document.getElementById("c_btn2").onclick = function () {
+  
+      Go.add_cart(salad, Number(document.getElementById("qtt2").value));
+      alert(`샐러드를 ${document.getElementById("qtt2").value}개 카트에 담았습니다!`);
+      };
+
+    document.getElementById("b_btn2").onclick = function () {
+      Go.buy(salad, Number(document.getElementById("qtt2").value));
+      alert(`샐러드를 ${document.getElementById("qtt2").value}개 샀습니다!`);
+      new Message("floatdiv").show(`${Go.name}님 구매금액 : ${Go.total}`); 
+      };
+
+
+
+
+
+    document.getElementById("c_btn3").onclick = function () {
+      Go.add_cart(abocado,Number(document.getElementById("qtt3").value));
+      alert(`아보카도가 ${document.getElementById("qtt3").value}개 카트에 담았습니다!`);
+      };
+
+    document.getElementById("b_btn3").onclick = function () {
+      Go.buy(abocado,Number(document.getElementById("qtt3").value));
+      alert(`아보카도를 ${document.getElementById("qtt3").value}개 샀습니다!`);
+      new Message("floatdiv").show(`${Go.name}님 구매금액 : ${Go.total}`); 
+      };
+
+
+
+
+
+// Joo는 프렌즈회원
+const Joo = new FriendsMember("Hansol");
+
+// Jeon은 퍼플회원
+const Jeon = new PurpleMember("hyunjun");
+
+
+const mouse= new Product("마우스", 20, 20000);
+const notebook = new Product("노트북", 10, 300000);
+Go.buy(apple)
+
+Go.add_cart(apple)
+Go.get_cart()
+
+  </script>
