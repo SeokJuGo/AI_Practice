@@ -1,0 +1,122 @@
+class Member {
+  constructor(name) {
+    this.name = name;
+    this.total = 0;
+    this.reward = 0;
+    this.delivery_fee = 3000;
+    this.cart = new Cart();
+  }
+    info() {
+    console.log(`이름: ${this.name}`);
+  }
+    buy(product,value=1) {
+      this.total += product.p_price*value;
+      product.quantity-=value
+      console.log(`${this.name}님이 ${product.p_name}(₩${product.p_price*value})를 ${value}개 샀습니다!`);
+  }
+    add_cart(product, quantity) {
+      this.cart.add_item(product, quantity);
+    }
+     delete_cart(product) {
+       this.cart.delete_item(product);
+  }
+    get_cart() {
+      return this.cart;
+    }
+ }
+// 0. 조건: 등급은 일반회원, 프렌즈, 퍼플(Plain, Friends, Purple) + 개인정보는 이름만 받습니다. 이외 3개 클래스를 구현하는데 필요한 속성, 함수를 직접 논의하고 구현해보세요
+class PlainMember extends Member {
+  constructor(name,total,reward,delivery_fee) {
+    super(name,total,reward,delivery_fee);
+    reward=this.total*0.005;
+  }
+  info_check(){
+    super.info();
+    this.reward=Math.floor(this.total*0.005);
+    console.log(`총 구매금액 : ₩${this.total} , 적립금 : ₩${this.reward}, 회원등급번호: 일반, 배송비 :${this.delivery_fee}원`);
+  }
+}
+class FriendsMember extends Member {
+  constructor(name,total,reward,delivery_fee) {
+    super(name,total,reward);
+    reward=this.total*0.01;
+    this.delivery_fee=2000;
+  }
+  info_check(){
+    super.info();
+    this.reward=Math.floor(this.total*0.01);
+    console.log(`총 구매금액 : ₩${this.total} , 적립금 : ₩${this.reward}, 회원등급번호: 프렌즈 , 배송비 :${this.delivery_fee}원`);
+  }
+}
+class PurpleMember extends Member {
+  constructor(name,total,reward,delivery_fee) {
+    super(name,total,reward);
+    this.delivery_fee=0;
+    reward=this.total*0.07;
+  }
+   info_check(){
+    super.info();
+    this.reward=Math.floor(this.total*0.07);
+    console.log(`총 구매금액 : ₩${this.total} , 적립금 : ₩${this.reward}, 회원등급번호: 퍼플 , 배송비 :${this.delivery_fee}원`);
+  }
+}
+// 1. 일련번호, 상품명, 수량, 가격을 속성으로 가지는 Product 클래스를 구현해보세요. (일련번호는 자동 입력됨)
+class Product {
+  static product_num = 0;
+  constructor(p_name, p_quantity, p_price,jjim=0) {
+    this.p_num = ++Product.product_num;
+    this.p_name = p_name;
+    this.p_quantity = p_quantity;
+    this.p_price = p_price;
+    this.jjim = jjim;
+  }
+  get num() {
+    return this.p_num;
+  }
+  get name() {
+    return this.p_name;
+  }
+  set name(value) {
+    this.p_name = value;
+  }
+  get quantity() {
+    return this.p_quantity;
+  }
+  set quantity(value) {
+    this.p_quantity = value;
+  }
+  get price() {
+    return this.p_price;
+  }
+  set price(value) {
+    this.p_price = value;
+  }
+}
+class Cart {
+  constructor() {
+    this.items = [];
+  }
+  add_item(product, quantity) {
+    let exist = this.items.find(i => i.product.name === product.name);
+    if (exist) {
+      exist.quantity += quantity;
+    } else {
+      this.items.push({ product, quantity });
+    }
+  }
+  delete_item(product) {
+    this.items.pop({product});
+  }
+  get_items() {
+    return this.items;
+  }
+}
+// Go는 일반회원
+const Go = new PlainMember("SeokJu");
+// Joo는 프렌즈회원
+const Joo = new FriendsMember("Hansol");
+// Jeon은 퍼플회원
+const Jeon = new PurpleMember("hyunjun");
+const apple = new Product("사과", 10, 1500);
+const mouse= new Product("마우스", 20, 20000);
+const notebook = new Product("노트북", 10, 300000);
