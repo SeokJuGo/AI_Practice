@@ -3,8 +3,8 @@
 // person1 이라는 객체를 만드시고 name, age, introduce()라는 함수를 넣습니다. 
 // 1. 객체와 변수를 담아서 만드는 방법 
 var person1 = {
-    name: '김연지',
-    age: '24',
+    name: '고석주',
+    age: '29',
     introduce : () => {
       console.log('안녕하세요! 김연지입니다!')
     }
