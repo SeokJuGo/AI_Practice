@@ -1,6 +1,6 @@
-# VSCode 에서 장고 환경 설정하기!
+#  ⚙️VSCode 에서 장고 환경 설정하기!
 
-### 1. 장고 프로젝트  생성!
+### 📜 1. 장고 프로젝트 생성!
 
 ```python
 $ conda create --name 가상환경이름
@@ -12,21 +12,15 @@ $ django-admin startproject 프로젝트명
 # 3. 프로젝트를 생성하자!
 ```
 
-
-
-
-
-### 2. 장고 서버 접속하기!!
+### ✅ 2. 장고 서버 접속하기!!
 
 ```
 $ python manage.py runserver
 ```
 
-### 
+###
 
-
-
-### 3. DB 생성하기
+### 💻 3. DB 생성하기
 
 ```python
 $ python manage.py makemigrations // git의 commit 와 유사
@@ -34,11 +28,9 @@ $ python manage.py migrate        // git의 push
 $ python manage.py createsuperuser// 계정생성
 ```
 
+###
 
-
-### 
-
-### 4. URL 관련
+### 🧬4. URL 관련
 
 ##### 4-1 back-end url
 
@@ -52,7 +44,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path('blog/', include('blog.urls')),
 ]
-
 ```
 
 ##### 4-2 app url
@@ -63,11 +54,9 @@ urlpatterns = [
 ]
 ```
 
+###
 
-
-### 
-
-### 5. views 관련
+### 🔭 5. views 관련
 
 ### FBV
 
@@ -97,5 +86,3 @@ class PostList(ListView):
     # template_name = 'board/index.html' 
     # ordering =
 ```
-
-
