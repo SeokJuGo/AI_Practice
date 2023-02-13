@@ -12,3 +12,4 @@ M(Model): DB 관련 로직
 T(Template): 브라우저에 실제로 보이는 부분에 관한 로직
 
 V(View): View와 Model을 이어주는 로직
+ 
