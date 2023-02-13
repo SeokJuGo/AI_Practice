@@ -1,4 +1,4 @@
-# Django
+# 📃 Django 📃
 ### 23.02.13 ~ 23.02.24
 
 > Django(/dʒæŋɡoʊ/ jang-goh/쟁고/장고)는 파이썬으로 만들어진 무료 오픈소스 웹 애플리케이션 프레임워크(web application framework), 
