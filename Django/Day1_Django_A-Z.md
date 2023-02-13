@@ -1,4 +1,4 @@
-#  ⚙️VSCode 에서 장고 환경 설정하기!
+#  ⚙️ VSCode 에서 장고 환경 설정하기 ⚙️
 
 ### 📜 1. 장고 프로젝트 생성!
 
@@ -58,7 +58,7 @@ urlpatterns = [
 
 ### 🔭 5. views 관련
 
-### FBV
+### FBV (Test용)
 
 ```python
 def index(request):
@@ -74,7 +74,7 @@ def index(request):
     )
 ```
 
-### CBV
+### CBV (주로 사용)
  
 ```python
 # blog/views.py
