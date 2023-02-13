@@ -75,7 +75,7 @@ def index(request):
 ```
 
 ### CBV
-
+ 
 ```python
 # blog/views.py
 from django.views.generic import ListView
