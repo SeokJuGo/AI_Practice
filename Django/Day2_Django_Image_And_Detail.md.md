@@ -1,6 +1,6 @@
-# ⚙️ DJANGO DAY 2 공부
+# 📖 DJANGO DAY 2 공부
 
-### 📜 1. REMIND
+### 🧠 1. REMIND
 
 ```python
 $ conda activate django
@@ -9,7 +9,7 @@ $ python manage.py runserver
 # 기억이 안나니 서버에 다시 접속해보기 
 ```
 
-## 2. 이미지 추가해보기
+## 🖼️ 2. 이미지 추가해보기
 
 ```python
 {% load static %}
@@ -17,7 +17,7 @@ $ python manage.py runserver
 # 이미지 파일은 미리 준비하여 제공하는 데 사용한다.! 
 ```
 
-### 💻 3. 모델에 업로드 이미지변수 생성해보기
+### 💻 3. 모델에 업로드 이미지변수&DB 생성해보기
 
 ```python
 header_img = models.ImageField(upload_to='blog/images/%Y/%m/%d/', blank=True)
@@ -26,7 +26,7 @@ file_upload = models.FileField(upload_to='blog/files/%Y/%m/%d/', blank=True)
 # 장고의 특징인 ORM => DB충돌이 생길 수 있다.
 ```
 
-### #주의# Media File(사용자 업로드 파일)
+### ⚠️주의⚠️ Media File(사용자 업로드 파일)
 
 ```python
 # backend/setting.py
@@ -38,7 +38,6 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '_media') 
-
 
 ```
 
@@ -58,11 +57,11 @@ from django.conf.urls.static import static
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 ```
 
-##### ![image](https://user-images.githubusercontent.com/116260619/218656235-57184422-8733-4e59-9621-c068cf776f7a.png)
+#####
 
 ###### (이런식으로 기입됨! #m) upload 파일들은 꼭 기입해주자!! #
 
-### 4. pk마다 다른 PostDetail 들어가기!
+### 🚪 4. pk마다 다른 PostDetail 들어가기!
 
 ```python
 # blog/views.py
@@ -99,5 +98,3 @@ urlpatterns =+ path('<int:pk>/',views.PostDetail.as_view())
 ```
 
 ![aaa](https://user-images.githubusercontent.com/116260619/218657895-c377c3d3-c50d-4a48-a54a-c5c7fc08f460.gif)
-
-
