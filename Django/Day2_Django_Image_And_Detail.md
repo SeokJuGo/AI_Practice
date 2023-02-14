@@ -90,7 +90,7 @@ class PostDetail(DetailView):
 </html>
 ```
 
-```python
+```python 
 
 # blog/urls.ppy
 urlpatterns =+ path('<int:pk>/',views.PostDetail.as_view())
