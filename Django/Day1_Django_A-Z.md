@@ -86,3 +86,16 @@ class PostList(ListView):
     # template_name = 'board/index.html' 
     # ordering =
 ```
+
+
+#### CBV class 부가 설명
+```python
+class PostList(ListView):
+    model = Post
+    ordering = '-pk' 
+    # post_list.html이 default Template로 지정된다.
+    template_name = 'blog/index.html'
+```
+- class와 html 이름은 연동이 된다.(html이름을 동일하게 snake형으로)
+- PostList의 snake형은 post_list이다. (html에서 객체처럼 사용함)
+- ordering = '-pk' 최신순으로 나열해준다!
